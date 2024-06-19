@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/card-chasers-frontend/static/css/main.a420cc6b.css",
+    "main.js": "/card-chasers-frontend/static/js/main.773acd79.js",
+    "static/js/453.d855a71b.chunk.js": "/card-chasers-frontend/static/js/453.d855a71b.chunk.js",
+    "index.html": "/card-chasers-frontend/index.html",
+    "main.a420cc6b.css.map": "/card-chasers-frontend/static/css/main.a420cc6b.css.map",
+    "main.773acd79.js.map": "/card-chasers-frontend/static/js/main.773acd79.js.map",
+    "453.d855a71b.chunk.js.map": "/card-chasers-frontend/static/js/453.d855a71b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a420cc6b.css",
+    "static/js/main.773acd79.js"
+  ]
+}

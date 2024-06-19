@@ -13,14 +13,14 @@ function App() {
   const handleSearch = async (searchTerm) => {
     setIsLoading(true);
     try {
-      const tcgResponse = await fetch(`http://localhost:5000/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+      const tcgResponse = await fetch(`https://card-chasers-f1b8d977959e.herokuapp.com/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
       const tcgData = await tcgResponse.json();
 
-      const allResponse = await fetch(`http://localhost:5000/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+      const allResponse = await fetch(`https://card-chasers-f1b8d977959e.herokuapp.com/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
         headers: {
           'Content-Type': 'application/json'
         }
