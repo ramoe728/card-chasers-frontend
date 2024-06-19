@@ -1,0 +1,97 @@
+/* App.css */
+
+/* General styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  /* Adds space below the search bar */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  /* Centers the search bar horizontally */
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  /* Sets the maximum width of the columns container */
+  box-sizing: border-box;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.left-column {
+  margin-right: 10px;
+  /* Adds space to the right of the left column */
+}
+
+.right-column {
+  margin-left: 10px;
+  /* Adds space to the left of the right column */
+}
+
+.card-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.card img {
+  width: 100px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-name {
+  font-weight: bold;
+}
+
+.card-price {
+  color: green;
+}
+
+.spinner {
+  border: 4px solid rgba(219, 247, 252, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite, grow .3s forwards ease-out;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

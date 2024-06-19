@@ -1,0 +1,57 @@
+/* src/CardList.css */
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    min-width: 50%;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    /* overflow-y: auto; */
+    position: relative;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.card-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    z-index: 2;
+}
+
+.card-image:hover {
+    transform: scale(3);
+    z-index: 10;
+}
+
+.card-name {
+    font-size: 1.2em;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.card-name:hover {
+    color: #444;
+}
+
+.card-set,
+.card-condition,
+.card-price {
+    margin: 5px 0;
+}
+
+.card-store {
+    font-size: 0.8em;
+    color: #666;
+    cursor: pointer;
+}
