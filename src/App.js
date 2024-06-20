@@ -13,14 +13,14 @@ function App() {
   const handleSearch = async (searchTerm) => {
     setIsLoading(true);
     try {
-      const tcgResponse = await fetch(`http://35.230.28.232/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+      const tcgResponse = await fetch(`https://34.36.253.65/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
         headers: {
           'Content-Type': 'application/json'
         }
       });
       const tcgData = await tcgResponse.json();
 
-      const allResponse = await fetch(`http://35.230.28.232/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+      const allResponse = await fetch(`https://34.36.253.65/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
         headers: {
           'Content-Type': 'application/json'
         }
