@@ -13,13 +13,8 @@ const Home = () => {
     const { currentUser } = useAuth();
 
     const [isLoading, setIsLoading] = useState(false);
-    const [allCards, setAllCards] = useState([]);
-    const [tcgCards, setTcgCards] = useState([]);
-
-    useEffect(() => {
-        setTcgCards(tcgInit);
-        setAllCards(allInit);
-    }, []);
+    const [allCards, setAllCards] = useState(() => allInit);
+    const [tcgCards, setTcgCards] = useState(() => tcgInit);
 
     const handleSearch = async (searchTerm) => {
         setIsLoading(true);
