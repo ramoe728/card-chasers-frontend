@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/card-chasers-frontend/static/css/main.15a48eaf.css",
-    "main.js": "/card-chasers-frontend/static/js/main.7177949d.js",
-    "static/js/453.d855a71b.chunk.js": "/card-chasers-frontend/static/js/453.d855a71b.chunk.js",
-    "index.html": "/card-chasers-frontend/index.html",
-    "main.15a48eaf.css.map": "/card-chasers-frontend/static/css/main.15a48eaf.css.map",
-    "main.7177949d.js.map": "/card-chasers-frontend/static/js/main.7177949d.js.map",
-    "453.d855a71b.chunk.js.map": "/card-chasers-frontend/static/js/453.d855a71b.chunk.js.map"
+    "main.css": "/static/css/main.15a48eaf.css",
+    "main.js": "/static/js/main.e448d252.js",
+    "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
+    "index.html": "/index.html",
+    "main.15a48eaf.css.map": "/static/css/main.15a48eaf.css.map",
+    "main.e448d252.js.map": "/static/js/main.e448d252.js.map",
+    "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.15a48eaf.css",
-    "static/js/main.7177949d.js"
+    "static/js/main.e448d252.js"
   ]
 }
