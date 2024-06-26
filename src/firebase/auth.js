@@ -10,6 +10,15 @@ import {
     signOut
 } from "firebase/auth";
 
+export const getToken = async () => {
+    const user = auth.currentUser;
+    if (user) {
+        const token = await user.getIdToken();
+        return token;
+    }
+    return null;
+};
+
 export const doCreateUserWithEmailAndPassword = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
 };

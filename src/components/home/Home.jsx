@@ -5,6 +5,7 @@ import Header from '../Header';
 import { useAuth } from '../../contexts/authContext';
 import { Navigate } from "react-router-dom";
 import './Home.css';
+import { getToken } from '../../firebase/auth';
 
 const Home = () => {
     const { currentUser } = useAuth();
@@ -16,16 +17,19 @@ const Home = () => {
     const handleSearch = async (searchTerm) => {
         setIsLoading(true);
         try {
-            const tcgResponse = await fetch(`https://api.card-chasers.com/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+            const token = await getToken();
+            const tcgResponse = await fetch(`https://flask-api-arvmj4dpaq-uw.a.run.app/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
                 }
             });
             const tcgData = await tcgResponse.json();
 
-            const allResponse = await fetch(`https://34.36.253.65/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+            const allResponse = await fetch(`https://flask-api-arvmj4dpaq-uw.a.run.app/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
                 }
             });
             const allData = await allResponse.json();
