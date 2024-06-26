@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardList from '../CardList';
 import SearchBar from '../SearchBar';
 import Header from '../Header';
@@ -6,6 +6,8 @@ import { useAuth } from '../../contexts/authContext';
 import { Navigate } from "react-router-dom";
 import './Home.css';
 import { getToken } from '../../firebase/auth';
+import tcgInit from '../../tcg_init.json'
+import allInit from '../../all_init.json'
 
 const Home = () => {
     const { currentUser } = useAuth();
@@ -13,6 +15,11 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [allCards, setAllCards] = useState([]);
     const [tcgCards, setTcgCards] = useState([]);
+
+    useEffect(() => {
+        setTcgCards(tcgInit);
+        setAllCards(allInit);
+    }, []);
 
     const handleSearch = async (searchTerm) => {
         setIsLoading(true);
