@@ -20,7 +20,8 @@ const Home = () => {
         setIsLoading(true);
         try {
             const token = await getToken();
-            const tcgResponse = await fetch(`https://flask-api-arvmj4dpaq-uw.a.run.app/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+            // https://flask-api-arvmj4dpaq-uw.a.run.app
+            const tcgResponse = await fetch(`http://localhost:8080/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     ...(token ? { 'Authorization': `Bearer ${token}` } : {})
@@ -28,7 +29,7 @@ const Home = () => {
             });
             const tcgData = await tcgResponse.json();
 
-            const allResponse = await fetch(`https://flask-api-arvmj4dpaq-uw.a.run.app/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+            const allResponse = await fetch(`http://localhost:8080/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     ...(token ? { 'Authorization': `Bearer ${token}` } : {})

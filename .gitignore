@@ -1,3 +1,4 @@
 node_modules
 certificate.crt
 private-key.key
+deploy-steps.txt
