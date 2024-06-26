@@ -1,7 +1,7 @@
 // src/App.js
 import { AuthProvider } from './contexts/authContext';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './components/home/Home';
+import Home from './components/home';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import VerifyEmail from './components/verifyEmail/verifyEmail';
