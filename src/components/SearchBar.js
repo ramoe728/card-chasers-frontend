@@ -26,7 +26,7 @@ const SearchBar = ({ onSearch, isLoading }) => {
         <div className="search-bar">
             <input
                 type="text"
-                placeholder="Search for a card..."
+                placeholder="Search for a card... (e.g. Sol Ring)"
                 value={searchTerm}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
