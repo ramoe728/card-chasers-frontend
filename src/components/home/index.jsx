@@ -19,26 +19,27 @@ const Home = () => {
     const handleSearch = async (searchTerm) => {
         setIsLoading(true);
         try {
+            const isLocal = window.location.hostname === 'localhost'
+            const baseURL = isLocal ? 'http://localhost:8080' : 'https://flask-api-arvmj4dpaq-wm.a.run.app'
             const token = await getToken();
-            // https://flask-api-arvmj4dpaq-uw.a.run.app
-            const tcgResponse = await fetch(`https://flask-api-arvmj4dpaq-uw.a.run.app/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
-                }
-            });
-            const tcgData = await tcgResponse.json();
+            // https://flask-api-arvmj4dpaq-uw.a.run.app (us-west1 [Oregon]) 
+            // https://flask-api-arvmj4dpaq-wm.a.run.app (us-west3 [Salt Lake City])
+            const [tcgResponse, allResponse] = await Promise.all([
+                fetch(`${baseURL}/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                    }
+                }),
+                fetch(`${baseURL}/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(token ? { 'Authorization': `Bearer ${token}` } : {})
+                    }
+                })
+            ]);
 
-            const allResponse = await fetch(`https://flask-api-arvmj4dpaq-uw.a.run.app/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...(token ? { 'Authorization': `Bearer ${token}` } : {})
-                }
-            });
-            const allData = await allResponse.json();
-
-            console.log('All data:', allData);
-            console.log('TCG data:', tcgData);
+            const [tcgData, allData] = await Promise.all([tcgResponse.json(), allResponse.json()]);
 
             setAllCards(allData["results"]);
             setTcgCards(tcgData["results"]);
