@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CardList from '../CardList';
+import TCGCardList from '../TCGCardList';
 import SearchBar from '../SearchBar';
 import Header from '../Header';
 import { useAuth } from '../../contexts/authContext';
@@ -13,8 +14,8 @@ const Home = () => {
     const { currentUser } = useAuth();
 
     const [isLoading, setIsLoading] = useState(false);
-    const [allCards, setAllCards] = useState(() => allInit);
-    const [tcgCards, setTcgCards] = useState(() => tcgInit);
+    const [allCards, setAllCards] = useState([]);//() => allInit);
+    const [tcgCards, setTcgCards] = useState([]);//() => tcgInit);
 
     const handleSearch = async (searchTerm) => {
         setIsLoading(true);
@@ -25,13 +26,13 @@ const Home = () => {
             // https://flask-api-arvmj4dpaq-uw.a.run.app (us-west1 [Oregon]) 
             // https://flask-api-arvmj4dpaq-wm.a.run.app (us-west3 [Salt Lake City])
             const [tcgResponse, allResponse] = await Promise.all([
-                fetch(`${baseURL}/scrape_tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+                fetch(`${baseURL}/tcg_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         ...(token ? { 'Authorization': `Bearer ${token}` } : {})
                     }
                 }),
-                fetch(`${baseURL}/scrape_all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
+                fetch(`${baseURL}/all_by_card_name?card_name=${encodeURIComponent(searchTerm)}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         ...(token ? { 'Authorization': `Bearer ${token}` } : {})
@@ -42,7 +43,8 @@ const Home = () => {
             const [tcgData, allData] = await Promise.all([tcgResponse.json(), allResponse.json()]);
 
             setAllCards(allData["results"]);
-            setTcgCards(tcgData["results"]);
+            setTcgCards(tcgData["results"][0]["results"]);
+            console.log(tcgData);
 
             // Update your state or handle the data as needed
         } catch (error) {
@@ -64,7 +66,7 @@ const Home = () => {
                 </div>
                 <div className="column right-column">
                     <h2>TCGPlayer</h2>
-                    <CardList cards={tcgCards} />
+                    <TCGCardList cards={tcgCards} />
                 </div>
             </div>
         </div>
